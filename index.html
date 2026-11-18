@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traffic Whisperer</title>
+  <meta name="description" content="Traffic Whisperer is a low-poly traffic puzzle game for Android. Draw roads freehand, add lights and roundabouts, and keep the city from gridlocking.">
+  <meta property="og:title" content="Traffic Whisperer">
+  <meta property="og:description" content="Draw the roads. Keep the city moving. A traffic puzzle game for Android.">
+  <meta property="og:image" content="https://ekaghni.github.io/traffic-whisperer/assets/icon.png">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="" width="44" height="44">Traffic Whisperer</a>
+      <nav aria-label="Site">
+        <a class="hide-sm" href="#play">How it plays</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title" style="padding:0">
+      <div class="scene" aria-hidden="true">
+        <svg viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice">
+          <!-- trees on the field -->
+          <g fill="#3FA64A">
+            <polygon points="140,520 168,470 196,520"/><polygon points="200,560 232,500 264,560"/>
+            <polygon points="1240,600 1270,546 1300,600"/><polygon points="1300,640 1334,580 1368,640"/>
+            <polygon points="620,720 650,668 680,720"/><polygon points="980,720 1006,676 1032,720"/>
+          </g>
+          <!-- districts: colour-coded destinations -->
+          <g>
+            <rect x="1210" y="300" width="70" height="56" fill="#FF5C80"/><polygon points="1204,302 1245,268 1286,302" fill="#D9405F"/>
+            <rect x="1296" y="318" width="58" height="38" fill="#FF5C80"/><polygon points="1290,320 1325,292 1360,320" fill="#D9405F"/>
+            <rect x="80" y="640" width="64" height="52" fill="#5BC7FA"/><polygon points="74,642 112,610 150,642" fill="#2E9FD8"/>
+            <rect x="160" y="656" width="52" height="36" fill="#5BC7FA"/><polygon points="154,658 186,632 218,658" fill="#2E9FD8"/>
+          </g>
+          <!-- the road, drawn freehand -->
+          <path id="route" class="road-edge draw" d="M 60 735 C 330 730, 470 640, 650 640 S 900 705, 1040 575 S 1150 360, 1250 380"/>
+          <path class="road draw" d="M 60 735 C 330 730, 470 640, 650 640 S 900 705, 1040 575 S 1150 360, 1250 380"/>
+          <path class="lane-mark draw-late" d="M 60 735 C 330 730, 470 640, 650 640 S 900 705, 1040 575 S 1150 360, 1250 380"/>
+          <!-- a traffic light at the bend -->
+          <g class="draw-late">
+            <rect x="752" y="584" width="6" height="70" fill="#343A63"/>
+            <rect x="740" y="546" width="30" height="62" rx="8" fill="#1E2240"/>
+            <circle cx="755" cy="560" r="7" fill="#7A2A3A"/><circle cx="755" cy="577" r="7" fill="#7A6420"/><circle cx="755" cy="594" r="7" fill="#57F28A"/>
+          </g>
+          <!-- cars head for the district of their colour -->
+          <g class="car">
+            <rect x="-17" y="-10" width="34" height="20" rx="6" fill="#FF5C80"/><rect x="-4" y="-8" width="12" height="16" rx="3" fill="#1E2240" opacity=".75"/>
+            <animateMotion dur="7s" begin="2.6s" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion>
+          </g>
+          <g class="car">
+            <rect x="-17" y="-10" width="34" height="20" rx="6" fill="#FF5C80"/><rect x="-4" y="-8" width="12" height="16" rx="3" fill="#1E2240" opacity=".75"/>
+            <animateMotion dur="7s" begin="4.9s" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion>
+          </g>
+          <g class="car">
+            <rect x="-20" y="-11" width="40" height="22" rx="6" fill="#FFD133"/><rect x="-5" y="-9" width="14" height="18" rx="3" fill="#1E2240" opacity=".75"/>
+            <animateMotion dur="7s" begin="3.7s" repeatCount="indefinite" rotate="auto" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#route"/></animateMotion>
+          </g>
+        </svg>
+      </div>
+      <div class="wrap">
+        <h1 id="hero-title">Draw the roads. Keep the city moving.</h1>
+        <p class="lede">A low-poly traffic puzzle. Sketch roads with your finger, time the lights, and get every car home before the city gridlocks.</p>
+        <a class="store" aria-disabled="true" role="link">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#5BC7FA" d="M4 2.5v19l10-9.5z"/><path fill="#FFD133" d="M14 12l3.2 3 3.6-2.1c.8-.5.8-1.3 0-1.8L17.2 9z"/><path fill="#6BD173" d="M4 2.5L14 12l3.2-3L5.4 2.1C4.9 1.8 4.4 2 4 2.5z"/><path fill="#FF5C80" d="M4 21.5c.4.5.9.7 1.4.4L17.2 15 14 12z"/></svg>
+          <span><small>Coming soon on</small>Google Play</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="play" aria-labelledby="play-title">
+      <div class="wrap">
+        <h2 id="play-title">Every level is one rush hour</h2>
+        <p class="intro">Levels take two to five minutes. You build while traffic is paused, then press GO and watch your network cope.</p>
+        <ol class="route" style="list-style:none;margin:0">
+          <li class="stop">
+            <div class="pin"><span>1</span></div>
+            <h3>Plan</h3>
+            <p>Gates and districts are colour-coded. Drag to draw roads within your budget. Junctions form where roads meet, roads tunnel through hills and bridges fly over rivers.</p>
+          </li>
+          <li class="stop">
+            <div class="pin"><span>2</span></div>
+            <h3>Run</h3>
+            <p>Cars pick their own routes and re-route around jams. Keep building while they drive: switch lights, add a roundabout, widen a road, tow a broken-down car.</p>
+          </li>
+          <li class="stop">
+            <div class="pin"><span>3</span></div>
+            <h3>Win</h3>
+            <p>Deliver the goal number of cars before the jam meter fills. Earn up to three stars by keeping queues short and spending less.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="shots" aria-labelledby="shots-title">
+      <div class="wrap">
+        <h2 id="shots-title">Thirty cities, three worlds</h2>
+        <p class="intro">Maple Suburbs teaches the basics. Riverside adds bridges and potholes. Downtown Metro brings sirens, rain and night shifts. Daily challenges and an endless mode come after that.</p>
+        <div class="strip">
+          <figure class="phone"><img src="assets/shot-1.jpg" alt="A riverside level where two drawn roads bridge a river between colour-coded districts" loading="lazy"><figcaption>Draw roads and bridge the river</figcaption></figure>
+          <figure class="phone"><img src="assets/shot-2.jpg" alt="Cars circling a tree-lined roundabout" loading="lazy"><figcaption>Roundabouts keep traffic flowing</figcaption></figure>
+          <figure class="phone"><img src="assets/shot-3.jpg" alt="A downtown level at night, with a gridlock countdown warning over a busy junction" loading="lazy"><figcaption>Night shifts test every junction</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="signs-title">
+      <div class="wrap">
+        <h2 id="signs-title">The city pushes back</h2>
+        <p class="intro">New trouble arrives level by level, so there is always something to fix.</p>
+        <div class="signs">
+          <div class="sign">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,4 60,56 4,56" fill="#FFD133" stroke="#1E2240" stroke-width="4" stroke-linejoin="round"/><ellipse cx="32" cy="42" rx="12" ry="5" fill="#1E2240"/></svg>
+            <h3>Potholes</h3><p>Busy roads crack. Tap to repair before cars slow down.</p>
+          </div>
+          <div class="sign">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,4 60,56 4,56" fill="#FF9A3D" stroke="#1E2240" stroke-width="4" stroke-linejoin="round"/><path d="M20 48 L32 26 L44 48" fill="none" stroke="#1E2240" stroke-width="4" stroke-linecap="round"/></svg>
+            <h3>Roadworks</h3><p>Closures come with a countdown. Re-route or rush the crew.</p>
+          </div>
+          <div class="sign">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#F4F6FA" stroke="#FF5C80" stroke-width="6"/><rect x="27" y="16" width="10" height="32" fill="#FF5C80"/><rect x="16" y="27" width="32" height="10" fill="#FF5C80"/></svg>
+            <h3>Ambulances</h3><p>Sirens need a clear path. Lights give way when they can.</p>
+          </div>
+          <div class="sign">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="10" fill="#2E9FD8" stroke="#1E2240" stroke-width="4"/><path d="M18 40h28M18 30h20M18 20h12" stroke="#F4F6FA" stroke-width="5" stroke-linecap="round"/></svg>
+            <h3>Rush hour</h3><p>Waves of cars test every junction you built.</p>
+          </div>
+          <div class="sign">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#1E2240"/><path d="M22 36c0-9 7-14 14-14-4 3-6 8-4 13s8 7 12 6c-3 5-8 8-13 8-5 0-9-4-9-13z" fill="#FFD133"/></svg>
+            <h3>Rain and night</h3><p>Slick roads, longer braking, headlights after dark.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fair" aria-labelledby="fair-title">
+      <div class="wrap cols">
+        <div>
+          <h2 id="fair-title">Free to play, fair about it</h2>
+          <p class="intro" style="margin-bottom:0">The game is free and paid for by ads and optional purchases. These rules are built into the game.</p>
+        </div>
+        <ul>
+          <li>Ads that give you something, like double coins or a second chance, only play when you choose them. At most 12 a day.</li>
+          <li>No banner ads, and no ads when you open the game.</li>
+          <li>No breaks between levels before level 9, never right after you lose, and at most one every three wins.</li>
+          <li>Any purchase removes the breaks between levels for good.</li>
+          <li>You can turn off personalised ads any time in Settings, under Privacy &amp; ads.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>Traffic Whisperer by Ekaghni Mukherjee. Contact: <a href="mailto:ekaghni.mukherjee@gmail.com">ekaghni.mukherjee@gmail.com</a></span>
+      <nav aria-label="Legal"><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a></nav>
+    </div>
+  </footer>
+</body>
+</html>
